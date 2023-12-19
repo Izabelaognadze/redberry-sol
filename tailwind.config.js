@@ -10,6 +10,9 @@ module.exports = {
           purple : '#5D37F3',
           grey : '#E4E3EB'
         }
+      },
+      fontFamily : {
+        fira: 'FiraGO'
       }
     },
   },
