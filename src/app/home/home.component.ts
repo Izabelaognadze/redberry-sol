@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { SelectorComponent } from '../design-system/selector/selector.component';
+import { ButtonDirective } from '../design-system/button.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SelectorComponent, ],
+  imports: [ButtonDirective ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
