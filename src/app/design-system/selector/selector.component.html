@@ -1,3 +1,5 @@
-<div class="flex" *ngFor="let item of selector">
-    <button [style.color]="item.text_color" [style.background-color]="item.background_color" class="py-2 px-4 rounded-[30px] text-xs font-medium leading-4">{{item.title}}</button>
+<div class="flex flex-wrap" >
+    <button *ngFor="let item of selector" [style.color]="item.text_color" [style.background-color]="item.background_color" class="py-2 px-4 rounded-[30px] text-xs font-medium leading-4">{{item.title}}</button>
 </div> 
+
+<!-- | slice:0:6; let i=index -->
