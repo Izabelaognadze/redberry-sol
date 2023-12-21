@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Selector } from '../modals/selector';
 import { Observable, map } from 'rxjs';
+import { Selector } from '../modals/selector';
 
 @Injectable({
   providedIn: 'root'

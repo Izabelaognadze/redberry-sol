@@ -8,11 +8,15 @@ module.exports = {
       colors: {
         clr: {
           purple : '#5D37F3',
-          grey : '#E4E3EB'
+          grey : '#E4E3EB',
+          bg : '#F3F2FA'
         }
       },
       fontFamily : {
         fira: 'FiraGO'
+      },
+      maxWidth : {
+        web : '1080px'
       }
     },
   },

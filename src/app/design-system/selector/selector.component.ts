@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Selector } from '../../shared/modals/selector';
+import { Component, Input, OnInit } from '@angular/core';
 import { SelectorService } from '../../shared/services/selector.service';
 import { CommonModule } from '@angular/common';
+import { Selector } from '../../shared/modals/selector';
 
 @Component({
   selector: 'app-selector',
@@ -11,14 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './selector.component.css'
 })
 export class SelectorComponent implements OnInit{
-  selector : Selector[] = []
-  loading = true;
+  @Input() public slice: number = 0;
+  selector : Selector[] = [];
 
   constructor (private selectorButtonService : SelectorService){ }
 
   ngOnInit(): void {
     this.selectorButtonService.getAllSelectors().subscribe((d) => {
-      this.loading = false;
       this.selector = d;
     });
   }
