@@ -6,11 +6,12 @@ import { Blog } from '../shared/modals/blogs'
 import { BlogsService } from '../shared/services/blogs.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../pages/header/header.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ButtonDirective, InputDirective , SelectorComponent],
+  imports: [CommonModule, ButtonDirective, InputDirective , SelectorComponent, HeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

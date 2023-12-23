@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HomeComponent } from '../home/home.component'
 import { Blog } from '../shared/modals/blogs';
 import { BlogsService } from '../shared/services/blogs.service';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../pages/header/header.component';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
