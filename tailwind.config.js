@@ -9,14 +9,15 @@ module.exports = {
         clr: {
           purple : '#5D37F3',
           grey : '#E4E3EB',
-          bg : '#F3F2FA'
+          bg : '#F3F2FA',
+          dateText: '#85858D'
         }
       },
       fontFamily : {
         fira: 'FiraGO'
       },
       maxWidth : {
-        web : '1080px'
+        web : '1288px'
       }
     },
   },
