@@ -5,6 +5,7 @@ import { SelectorComponent } from '../design-system/selector/selector.component'
 import { Blog } from '../shared/modals/blogs'
 import { BlogsService } from '../shared/services/blogs.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,15 +17,20 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent implements OnInit{
   items : Blog[] = []
 
-  constructor( private blogsService : BlogsService) { }
+  constructor( private blogsService : BlogsService, private router: Router) { }
 
   ngOnInit(): void {
     this.blogsService.getAllBlogs().subscribe((d) => {
       this.items = d;
+      this.blogsService.setItems(this.items);
 
       this.items.forEach((blog) => {
         console.log(blog);
       });
     })
+  }
+
+  viewBlog(id: number) : void {
+    this.router.navigate(['/blog', id]);
   }
 }

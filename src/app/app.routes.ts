@@ -4,5 +4,5 @@ import { BlogComponent } from './blog/blog.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'blog', component: BlogComponent }
+    { path: 'blog/:id', component: BlogComponent }
 ];

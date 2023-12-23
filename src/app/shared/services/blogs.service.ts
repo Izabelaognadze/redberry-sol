@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Blog } from '../modals/blogs';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,13 @@ export class BlogsService {
   private apiUrl = 'https://api.blog.redberryinternship.ge/api/blogs';
 
   constructor(private http: HttpClient) {}
+
+  private itemsSubject = new BehaviorSubject<Blog[]>([]);
+  items$ = this.itemsSubject.asObservable();
+
+  setItems(items: Blog[]): void {
+    this.itemsSubject.next(items);
+  }
 
   getAllBlogs(): Observable<Blog[]> {
     const url = `${this.apiUrl}`;
