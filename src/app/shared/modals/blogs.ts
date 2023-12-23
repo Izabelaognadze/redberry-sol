@@ -1,20 +1,20 @@
 export interface Blogs {
-    data: Data[];
+  data: Blog[];
 }
 
-export interface Data {
-    id:           number;
-    title:        string;
-    description:  string;
-    image:        string;
-    publish_date: Date;
-    categories:   Category[];
-    author:       string;
+export interface Blog {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  publish_date: Date;
+  categories: Category[];
+  author: string;
 }
 
 export interface Category {
-    id:               number;
-    name:             string;
-    text_color:       string;
-    background_color: string;
+  id: number;
+  title: string;
+  text_color: string;
+  background_color: string;
 }

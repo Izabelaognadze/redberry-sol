@@ -1,27 +1,25 @@
 <div class="mx-auto font-fira">
   <div class="flex justify-between items-center my-5 max-w-web mx-auto">
-    <a href="" routerLink=""
-      ><img src="assets/shared/LOGO.png" class="w-[150px] h-6" alt=""
-    /></a>
+    <a href="" routerLink=""><img src="assets/shared/LOGO.png" class="w-[150px] h-6" alt="" /></a>
     <button appButton type="submit" variant="button2">დაამატე ბლოგი</button>
   </div>
 
   <div class="bg-clr-bg">
-      <div class="max-w-web mx-auto">
-          <div class="flex justify-between items-center py-16">
-            <h1 class="text-[64px] font-bold leading-[72px] text-[#1A1A1F]">ბლოგი</h1>
-            <img src="assets/home/mainImg.png" alt="">
-          </div>
-
-          <app-selector [slice]="6" class="flex justify-center pb-16"></app-selector>
-
-          <div class="" *ngFor="let blog of item">
-            <div *ngFor="let i of blog.data">
-              <p class="">{{i.author}}</p>
-              <p>{{i.description}}</p>
-            </div>
-          </div>
-
+    <div class="max-w-web mx-auto">
+      <div class="flex justify-between items-center py-16">
+        <h1 class="text-[64px] font-bold leading-[72px] text-[#1A1A1F]">ბლოგი</h1>
+        <img src="assets/home/mainImg.png" alt="">
       </div>
+
+      <app-selector [slice]="6" class="flex justify-center pb-16"></app-selector>
+      <div class="" *ngFor="let item of items">
+        <p class="">{{item.author}}</p>
+        <p class="">{{item.publish_date}}</p>
+        <p class="">{{item.title}}</p>
+        <p class="" *ngFor="let i of item.categories">{{i.title}}</p>
+        <p class="">{{item.description}}</p>
+      </div>
+
+    </div>
   </div>
 </div>

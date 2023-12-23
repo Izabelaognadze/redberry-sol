@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ButtonDirective } from '../design-system/button.directive';
 import { InputDirective } from '../design-system/input.directive';
 import { SelectorComponent } from '../design-system/selector/selector.component';
-import { Blogs } from '../shared/modals/blogs'
+import { Blog } from '../shared/modals/blogs'
 import { BlogsService } from '../shared/services/blogs.service';
 import { CommonModule } from '@angular/common';
 
@@ -14,16 +14,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
-  item : Blogs[] = []
+  items : Blog[] = []
 
   constructor( private blogsService : BlogsService) { }
 
   ngOnInit(): void {
     this.blogsService.getAllBlogs().subscribe((d) => {
-      this.item = d;
+      this.items = d;
 
-      this.item.forEach((blog) => {
-        console.log(blog.data);
+      this.items.forEach((blog) => {
+        console.log(blog);
       });
     })
   }
