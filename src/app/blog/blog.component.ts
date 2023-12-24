@@ -24,12 +24,12 @@ export class BlogComponent implements OnInit{
       this.loadBlog();
     });
 
-    this.blogsService.items$.subscribe((items) => {
-      this.items = items;
+    this.blogsService.items$.subscribe((d) => {
+      this.items = d;
     });
   }
 
   loadBlog() : void {
-
+    this.items = this.items.filter(item => item.id === this.id);
   }
 }
