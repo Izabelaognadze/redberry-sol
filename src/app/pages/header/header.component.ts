@@ -8,7 +8,7 @@ import { LogInComponent } from '../log-in/log-in.component';
   standalone: true,
   imports: [CommonModule, ButtonDirective, LogInComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   @ViewChild(LogInComponent) LogInComponent: LogInComponent | undefined;

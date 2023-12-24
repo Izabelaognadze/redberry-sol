@@ -8,7 +8,7 @@ import { ButtonDirective } from '../../design-system/button.directive';
   standalone: true,
   imports: [CommonModule, InputDirective, ButtonDirective],
   templateUrl: './log-in.component.html',
-  styleUrl: './log-in.component.css'
+  styleUrl: './log-in.component.css',
 })
 export class LogInComponent {
   isVisible = false;

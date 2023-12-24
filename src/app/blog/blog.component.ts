@@ -10,17 +10,25 @@ import { HeaderComponent } from '../pages/header/header.component';
   standalone: true,
   imports: [CommonModule, HeaderComponent],
   templateUrl: './blog.component.html',
-  styleUrl: './blog.component.css'
+  styleUrl: './blog.component.css',
 })
-export class BlogComponent implements OnInit{
+export class BlogComponent implements OnInit {
   id?: number = undefined;
   items: Blog[] = [];
 
-  constructor( private activatedRoute : ActivatedRoute, private blogsService: BlogsService) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private blogsService: BlogsService
+  ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(c => {
-      this.id =+ c.get('id')!;
+    this.blogsService.getAllBlogs().subscribe((d) => {
+      this.items = d;
+      this.blogsService.setItems(this.items);
+    });
+
+    this.activatedRoute.paramMap.subscribe((c) => {
+      this.id = +c.get('id')!;
       this.loadBlog();
     });
 
@@ -29,7 +37,7 @@ export class BlogComponent implements OnInit{
     });
   }
 
-  loadBlog() : void {
-    this.items = this.items.filter(item => item.id === this.id);
+  loadBlog(): void {
+    this.items = this.items.filter((item) => item.id === this.id);
   }
 }
