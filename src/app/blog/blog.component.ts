@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Blog } from '../shared/modals/blogs';
 import { BlogsService } from '../shared/services/blogs.service';
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,8 @@ export class BlogComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private blogsService: BlogsService
+    private blogsService: BlogsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +35,12 @@ export class BlogComponent implements OnInit {
 
     this.blogsService.items$.subscribe((d) => {
       this.items = d;
+    });
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
     });
   }
 

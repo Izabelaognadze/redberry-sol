@@ -7,6 +7,8 @@ import { BlogsService } from '../shared/services/blogs.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../pages/header/header.component';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +26,9 @@ import { HeaderComponent } from '../pages/header/header.component';
 export class HomeComponent implements OnInit {
   items: Blog[] = [];
 
+  searchBlog$ = new BehaviorSubject<string | null>('');
+  searchResult$!: Observable<Blog[]>;
+
   constructor(private blogsService: BlogsService, private router: Router) {}
 
   ngOnInit(): void {
@@ -35,6 +40,10 @@ export class HomeComponent implements OnInit {
       //   console.log(blog);
       // });
     });
+
+    // this.searchResult$ = this.searchBlog$.pipe(
+    //   // switchMap((query) => this.blogsService.findBlogById(query || 0))
+    // );
   }
 
   viewBlog(id: number): void {
