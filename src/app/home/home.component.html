@@ -16,9 +16,10 @@
           <p class="mt-6 mb-2 text-base font-medium leading-5">{{item.author}}</p>
           <p class="text-clr-dateText text-xs font-normal leading-4">{{item.publish_date | date:"dd/MM/yyyy"}}</p>
           <p class="text-xl font-bold my-4 line-clamp-2">{{item.title}}</p>
-          <div class="flex flex-wrap gap-4 line-clamp-2">
+          <app-selector class="flex justify-center pb-16" (sendSelectorID)="handleSendSelectorID($event)"></app-selector>
+          <!-- <div class="flex flex-wrap gap-4 line-clamp-2">
             <p class="py-2 px-4 rounded-[30px] text-xs font-medium leading-4" *ngFor="let i of item.categories" [style.color]="i.text_color" [style.background-color]="i.background_color">{{i.title}}</p>
-          </div>
+          </div> -->
           <p class="my-4 line-clamp-2 text-base leading-7 font-normal">{{item.description}}</p>
           <button class="flex items-center text-clr-purple gap-1 text-sm font-medium leading-5" (click)="viewBlog(item.id)">
             <p>სრულად ნახვა</p>
