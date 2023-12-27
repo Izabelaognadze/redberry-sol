@@ -26,12 +26,6 @@ export class HomeComponent implements OnInit {
   receiveSelectorId: number[] = [];
   filteredItems: Blog[] = [];
 
-  filterItems() {
-    this.filteredItems = this.items.filter((item) =>
-      this.receiveSelectorId.includes(item.id)
-    );
-  }
-
   handleSendSelectorID(selectorID: number[]) {
     this.receiveSelectorId = selectorID;
   }
@@ -42,11 +36,11 @@ export class HomeComponent implements OnInit {
       this.items = d;
       this.blogsService.setItems(this.items);
       this.filteredItems = [...this.items];
-
-      // this.items.forEach((blog) => {
-      //   console.log(blog);
-      // });
     });
+
+    this.filteredItems = this.items.filter((item) =>
+      this.receiveSelectorId.includes(item.id)
+    );
   }
 
   viewBlog(id: number): void {

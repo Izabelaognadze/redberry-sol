@@ -11,7 +11,6 @@ import { Selector } from '../../shared/modals/selector';
   styleUrl: './selector.component.css',
 })
 export class SelectorComponent implements OnInit {
-  @Input() public slice: number = 0;
   selector: Selector[] = [];
   @Output() sendSelectorId = new EventEmitter<number[]>();
   @Input() selectorID: number[] = [];

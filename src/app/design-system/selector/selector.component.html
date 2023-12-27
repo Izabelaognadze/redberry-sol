@@ -1,9 +1,9 @@
-<div class="flex flex-wrap gap-6">
+<div class="flex flex-wrap gap-6  w-[700px]">
   <button
-    *ngFor="let item of selector.slice(0, slice)"
+    *ngFor="let item of selector"
     (click)="categoryClick(item.id)"
     [ngClass]="{
-      'outline ': selectorID.includes(
+      'outline opacity-80': selectorID.includes(
         item.id
       )
     }"
