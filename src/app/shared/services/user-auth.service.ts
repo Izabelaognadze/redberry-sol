@@ -1,34 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Email } from '../modals/email';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserAuthService {
-  private url = 'https://api.blog.redberryinternship.ge/api/login';
+  constructor(private http: HttpClient, private router: Router) {}
 
-  constructor(private http: HttpClient) {}
-
-  getAllEmails(): Observable<Email[]> {
-    const url = `${this.url}`;
-
-    const headers = {
-      Authorization:
-        'Bearer 29e4868f074b41fca2f9fcdfda7b2d1db28ea3354b8226e3f18b298116cb22c6',
-    };
-
+  login(credentials: { email: string }) {
     return this.http
-      .get<{ d: Email[] }>(url, { headers })
-      .pipe(map((response) => response.d));
+      .post<Email>(
+        'https://api.blog.redberryinternship.ge/api/login',
+        JSON.stringify(credentials),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      .pipe(
+        tap((response) => {
+          localStorage.setItem('access_email', response.email);
+          localStorage.setItem('user', JSON.stringify(response));
+          this.router.navigate(['/']);
+        })
+      );
   }
 }
-
-// login(email: string): Observable<any> {
-//   const d = { email: email };
-//   return this.http.post(`${this.url}/login`, d);
-// }
-
-// private isSignedIn = new BehaviorSubject<boolean>(false);
-// onSignedIn$ = this.isSignedIn.asObservable();
