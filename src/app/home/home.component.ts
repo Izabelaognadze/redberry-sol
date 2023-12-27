@@ -24,10 +24,16 @@ import { HeaderComponent } from '../pages/header/header.component';
 export class HomeComponent implements OnInit {
   items: Blog[] = [];
   receiveSelectorId: number[] = [];
+  filteredItems: Blog[] = [];
+
+  filterItems() {
+    this.filteredItems = this.items.filter((item) =>
+      this.receiveSelectorId.includes(item.id)
+    );
+  }
 
   handleSendSelectorID(selectorID: number[]) {
     this.receiveSelectorId = selectorID;
-    console.log(this.receiveSelectorId);
   }
   constructor(private blogsService: BlogsService, private router: Router) {}
 
@@ -35,6 +41,7 @@ export class HomeComponent implements OnInit {
     this.blogsService.getAllBlogs().subscribe((d) => {
       this.items = d;
       this.blogsService.setItems(this.items);
+      this.filteredItems = [...this.items];
 
       // this.items.forEach((blog) => {
       //   console.log(blog);
@@ -44,5 +51,9 @@ export class HomeComponent implements OnInit {
 
   viewBlog(id: number): void {
     this.router.navigate(['/blog', id]);
+  }
+
+  isSelected(blogId: number): boolean {
+    return this.receiveSelectorId.includes(blogId);
   }
 }

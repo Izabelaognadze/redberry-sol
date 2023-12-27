@@ -13,8 +13,8 @@ import { Selector } from '../../shared/modals/selector';
 export class SelectorComponent implements OnInit {
   @Input() public slice: number = 0;
   selector: Selector[] = [];
-  @Output() sendSelectorID = new EventEmitter<number[]>();
-  selectorID: number[] = [];
+  @Output() sendSelectorId = new EventEmitter<number[]>();
+  @Input() selectorID: number[] = [];
 
   constructor(private selectorButtonService: SelectorService) {}
 
@@ -31,8 +31,6 @@ export class SelectorComponent implements OnInit {
       this.selectorID = this.selectorID.filter((item) => item !== id);
     }
 
-    // console.log(this.aba);
-
-    this.sendSelectorID.emit([...this.selectorID]);
+    this.sendSelectorId.emit([...this.selectorID]);
   }
 }
