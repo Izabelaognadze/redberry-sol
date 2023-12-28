@@ -1,0 +1,6 @@
+/* .border-clr.ng-invalid.ng-touched {
+  @apply border-red-500 bg-[#FAF2F3];
+}
+.ng-invalid:not(form) {
+  border: 2px solid green;
+} */

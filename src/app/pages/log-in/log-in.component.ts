@@ -39,4 +39,11 @@ export class LogInComponent {
     private userAuthService: UserAuthService,
     private fb: FormBuilder
   ) {}
+
+  isEmailInArray(emailValue: string | null): boolean {
+    if (emailValue !== null) {
+      return this.emails.some((email) => email.email === emailValue);
+    }
+    return false;
+  }
 }

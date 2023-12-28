@@ -1,24 +1,42 @@
-<div *ngIf="!isVisible"  class="bg-[#1A1A1F] h-screen bg-opacity-25 absolute top-0 bottom-0 left-0 right-0 mx-auto  my-auto overscroll-contain">
-    <div class="flex flex-col font-fira w-[480px] absolute bg-white px-6 pb-10 rounded-xl h-min top-0 bottom-0 left-0 right-0 mx-auto  my-auto">
-        <svg (click)="toggleVisibility()" class="mt-5 ml-auto w-8 h-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M7.75732 16.2426L16.2426 7.75736" stroke="#1A1A1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16.2426 16.2426L7.75732 7.75736" stroke="#1A1A1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<div *ngIf="!isVisible"
+  class="bg-[#1A1A1F] h-screen bg-opacity-25 absolute top-0 bottom-0 left-0 right-0 mx-auto  my-auto overscroll-contain">
+  <div
+    class="flex flex-col font-fira w-[480px] absolute bg-white px-6 pb-10 rounded-xl h-min top-0 bottom-0 left-0 right-0 mx-auto  my-auto">
+    <svg (click)="toggleVisibility()" class="mt-5 ml-auto w-8 h-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg"
+      width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M7.75732 16.2426L16.2426 7.75736" stroke="#1A1A1F" stroke-width="1.5" stroke-linecap="round"
+        stroke-linejoin="round" />
+      <path d="M16.2426 16.2426L7.75732 7.75736" stroke="#1A1A1F" stroke-width="1.5" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+    <h3 class="mx-auto text-2xl font-bold leading-8">შესვლა</h3>
+    <form [formGroup]="form">
+      <label for="email" class="font-medium text-sm leading-5">ელ-ფოსტა</label>
+      <input formControlName="email" type="text" appInput placeholder="Example@redberry.ge" 
+      [class.bg-green-500]="email?.value && isEmailInArray(email.value)"
+      [class.border-green-500]="email?.value && isEmailInArray(email.value)"
+      [class.border-red-500]="email?.invalid && (email?.touched || email?.dirty)"
+      [class.bg-[#FAF2F3]]="email?.invalid && (email?.touched || email?.dirty)"
+        class="mb-2 w-full  bg-[#F7F7FF] border-[#5D37F3] border-clr">
+      <div class="mb-6" *ngIf="email?.invalid && (email?.touched || email?.dirty)">
+        <div *ngIf="email?.errors?.['required']" class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M10.0002 1.66666C5.41683 1.66666 1.66683 5.41666 1.66683 10C1.66683 14.5833 5.41683 18.3333 10.0002 18.3333C14.5835 18.3333 18.3335 14.5833 18.3335 10C18.3335 5.41666 14.5835 1.66666 10.0002 1.66666Z"
+              fill="#EA1919" />
+            <path d="M10 13.3333L10 9.16666" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M10.0044 6.66667L9.99691 6.66667" stroke="white" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
-          <h3 class="mx-auto text-2xl font-bold leading-8">შესვლა</h3>
-          <form  [formGroup]="form">
-              <label for="email" class="font-medium text-sm leading-5">ელ-ფოსტა</label>
-              <input formControlName="email" type="text" appInput placeholder="Example@redberry.ge" class="mb-2 w-full placeholder: disabled:border-red-500 disabled:bg-[#FAF2F3] enabled:bg-[#F8FFF8] enabled:border-[#14D81C] active:bg-[#F7F7FF] active:border-[#5D37F3]">
-              <div class="mb-6" *ngIf="email?.invalid && (email?.touched || email?.dirty)">
-                <div *ngIf="email?.errors?.['required']" class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M10.0002 1.66666C5.41683 1.66666 1.66683 5.41666 1.66683 10C1.66683 14.5833 5.41683 18.3333 10.0002 18.3333C14.5835 18.3333 18.3335 14.5833 18.3335 10C18.3335 5.41666 14.5835 1.66666 10.0002 1.66666Z" fill="#EA1919"/>
-                        <path d="M10 13.3333L10 9.16666" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10.0044 6.66667L9.99691 6.66667" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <p class="text-[#EA1919] text-xs font-normal leading-5">ელ-ფოსტა არ მოიძებნა</p>
-                </div>
-              </div>
-              <button appButton variant="button2" class="mt-3">შესვლა</button>
-          </form>
-    </div>
+          <p class="text-[#EA1919] text-xs font-normal leading-5">ელ-ფოსტა არ მოიძებნა</p>
+        </div>
+      </div>
+      <button appButton variant="button2" class="mt-3">შესვლა</button>
+    </form>
+  </div>
 </div>
+
+<!-- bg-[#F7F7FF] border-[#5D37F3] purple
+enabled:bg-[#F8FFF8] enabled:border-[#14D81C] green
+disabled:border-red-500 disabled:bg-[#FAF2F3] red -->
